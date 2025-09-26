@@ -1,0 +1,115 @@
+/* General Reset and Typography */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Light blue/gray background */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Container for the entire profile card */
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    
+    /* Layout Logic (Large Screens):
+       - 2 equal columns (1fr 1fr) for the bottom boxes. */
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 16px; /* Rounded corners for the whole card */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for all content boxes */
+.content-box {
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 1. Large Top Box (spans both columns) */
+.top-section {
+    /* Critical: Makes this box span both 1fr columns in the container */
+    grid-column: span 2; 
+    background-color: #e3f2fd; /* Light Blue background */
+    border: 1px solid #90caf9;
+}
+
+/* Inner Grid for Picture + Text (inside the top box) */
+.inner-grid {
+    display: grid;
+    /* Divide the top section into a small column for the picture and a large column for the text */
+    grid-template-columns: 180px 1fr; 
+    gap: 20px;
+    align-items: center;
+}
+
+/* Profile Picture Container and Image Styling */
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures the image fills the circle without stretching */
+    border-radius: 50%; /* Makes the image circular */
+    border: 5px solid #1976d2; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.intro-text-area h2 {
+    margin-top: 0;
+    color: #0d47a1; /* Dark Blue text */
+}
+
+/* 2. Hobbies Box (Bottom Left) */
+.hobbies-box {
+    background-color: #fce4ec; 
+    border: 1px solid #ec407a;
+}
+.hobbies-box h2 {
+    color: #c2185b; /* Darker Pink text */
+}
+
+/* 3. Aspirations Box (Bottom Right) */
+.aspirations-box {
+    background-color: #e8f5e9; 
+    border: 1px solid #81c784;
+}
+.aspirations-box h2 {
+    color: #388e3c; /* Dark Green text */
+}
+
+/* --- RESPONSIVENESS (Media Query) --- */
+/* Changes layout for screens smaller than 768px (Mobile) */
+@media (max-width: 768px) {
+    .profile-container {
+        /* Reset to 1 column for vertical stacking */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+
+    /* Top box must reset its column span to 1 on mobile */
+    .top-section {
+        grid-column: span 1;
+    }
+    
+    /* Inner grid stacking for the top box content on mobile */
+    .inner-grid {
+        grid-template-columns: 1fr; /* Stack the picture and text vertically */
+        text-align: center; 
+        gap: 15px;
+    }
+
+    /* Ensure picture is still centered when stacked */
+    .profile-picture-container {
+        padding-top: 10px;
+    }
+}
+
